@@ -1,0 +1,35 @@
+{% extends 'html/Home.html' %}
+{% block title %}
+About
+{% endblock title %}
+{% block section1 %}
+<div class="jumbotron text-center" style="margin-bottom:0;height:30vh">
+<h1>Create Account</h1>
+</div>
+{% endblock section1 %}
+
+{% block section2 %}
+<div class="container">
+    <br><br>
+    
+    <form action="" method="POST" novalidate>
+    {% csrf_token %}
+    {% for field in form %}
+    {{field.label}}:{{field}}{{field.errors|striptags}}<br><br>
+    {% endfor %}
+    <input type="submit">
+    </form>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tag %}{{message.tags}}
+    {% endif %}
+    {{message}}
+    {% endfor %}
+    {% endif %}
+
+    <a href="{% url 'Login' %}">Login</a>
+</div>
+{% endblock section2 %}
+
+{% block image %}
+{% endblock image %}

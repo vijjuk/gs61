@@ -1,0 +1,38 @@
+{% extends 'html/profile.html' %}
+{% block title %}Upload {% endblock title %}
+{% block section1 %}
+
+<div class="container">
+  <div class="py-5 text-center bg-secondary text-white">
+      <h1>Image Wall</h1>
+      <h4>Upload Images & Wallpaper & Themes</h4>
+  </div>
+</div>
+
+  
+<div class="form bg-light text-center my-4">
+  <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form}}
+      <br><br>
+      <input type="submit" value="Save">
+  </form>
+      {% if messages %}
+      {% for message in messages %}
+      {% if message.tags %}
+      {{message.tags}}
+      {% endif %}
+      {{message}}
+      {% endfor %}
+      {% endif %}
+</div>
+<div class="row ml-2">
+  {% for x in img %}
+  <div class="card m-2" style="max-width:400px;text-align:right;border:1px solid black;border-width: 0 0 2px 0px;">
+     <img class="card-img-top" src="{{x.photo.url}}" alt="" >
+     <div><small>{{x.date}}</small></div> 
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock section1 %}

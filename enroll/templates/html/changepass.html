@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Changepassword</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+    {% for f in form %}
+    {{f.label}}:{{f}} {{f.errors|striptags}}<br><br>
+    {% endfor %}  
+    <input type="submit" value="Change">  
+    </form>
+    {% if messages %}
+    {% for message in messages %}
+    {{message}}
+    {% endfor %}
+    {% endif %}
+
+    <a href="{% url 'lgout' %}">Logut</a>
+</body>
+</html>
