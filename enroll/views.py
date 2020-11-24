@@ -14,7 +14,7 @@ def SignUp(request):
         fm=Signup(request.POST)
         if fm.is_valid():
             fm.save()
-            messages.add_message(request,messages.SUCCESS,"ho gya jhsvfjgvsb jsbv")
+            messages.add_message(request,messages.SUCCESS,"Congurations! Your Account Has been created!")
     else:
         fm=Signup()
     return render(request,'html/signup.html',{'form':fm})
